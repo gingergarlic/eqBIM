@@ -81,7 +81,7 @@
 
 
 		json = "https://gingergarlic.github.io/eqBIM/webplayer.html?load=./" + item.removed;
-		$scope.items.splice(index, 1);
+		$scope.items.splice($scope.items.indexOf(item),1);
 		document.getElementById("canvas").src=json;
 		}
 	};
