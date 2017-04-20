@@ -76,11 +76,21 @@
 		delete $scope.item;
 	};
 
+	$scope.remove = function(item) {
+		if(item.removed){
+
+
+		json = "https://gingergarlic.github.io/eqBIM/webplayer.html?load=./" + item.removed;
+		$scope.items.splice(index, 1);
+		document.getElementById("canvas").src=json;
+		}
+	};
+
 	$scope.view = function(item){
 		url = "https://gingergarlic.github.io/eqBIM/webplayer.html?load=./" + item.json;
 		console.log(url);
 		document.getElementById("canvas").src=url;
-	}
+	};
 		
 		$scope.items = [
 			{
@@ -146,6 +156,7 @@
 			eqid: 'STRPR-014',
 			needdate: '2017-05-01',
 			json: 'Bed.json',
+			removed: 'ExperimentNoBed.json',
 			},
 			{
 			id: 9,
@@ -238,7 +249,8 @@
 			    		<td><button ng-click="view(item)" type="button" class="btn btn-default btn-md">
 						  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 						</button></td>
-						<td><button type="button" class="btn btn-default btn-md">
+
+						<td><button ng-click="remove(item)" type="button" class="btn btn-default btn-md">
 						  <span style="color:red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</button></td>
 						
