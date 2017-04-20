@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="equiplan">
+<head>
+	<meta charset="UTF-8">
+	<title>Equiplan BIM Visualization Demo</title>
+
+<!-- JQuery -->
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+<style>
+	button{
+		margin-top: 10px;
+	}
+	input{
+		margin-top: 5px;
+	}
+	select{
+		margin-top: 5px;
+	}
+	#content{
+		padding-left: 100px;
+		padding-right: 100px;
+	}
+	#nav{
+		background-color: #E9E9E9;
+	}
+	#hospital_info{
+		margin-top: 20px;
+	}
+	#tables{
+		margin-top: 20px;
+	}
+	#condition{
+		margin-top: 5px;
+	}
+	.undetermined{
+		background-color: #E0E0E0;
+	}
+	.good{
+		background-color: #99FF99;
+	}
+	.fair{
+		background-color: #FFFF66;
+	}
+	.serious{
+		background-color: #FF6666;
+	}
+	.critical{
+		background-color: #FF3333;
+		color: white;
+	}
+	.dead{
+		background-color: #000000;
+		color: white;
+	}
+</style>
+
+</head>
+
+
+<script>
+	
+	var eq = angular.module("equiplan", []);
+
+	eq.controller("itemCtrl", function($scope){
+	$scope.add = function(item) {
+		
+		$scope.items.push(angular.copy(item));
+		delete $scope.item;
+	};
+		
+		$scope.items = [
+			{
+			id: 1,
+			desc: 'Cart, Procedure, General (CAPGE)',
+			quantity: 1, 
+			eqid: 'CAPGE-004',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 2,
+			desc: 'Chair, Interiors, Guest w/Arms (CHIGA)',
+			quantity: 1, 
+			eqid: 'CHIGA-001',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 3,
+			desc: 'Chair, Interiors, Guest w/Arms (CHIGA)',
+			quantity: 1, 
+			eqid: 'CHIGA-001',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 4,
+			desc: 'Computer Workstation, Data Mgt, Pharmacy (CISDP)',
+			quantity: 1, 
+			eqid: 'CISDP-002',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 5,
+			desc: 'Computer Workstation, Data Mgt, Pharmacy (CISDP)',
+			quantity: 1, 
+			eqid: 'CISDP-002',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 6,
+			desc: 'Headwall, Rail System, 1 Patient (HDWRP)',
+			quantity: 1, 
+			eqid: 'HDWRP-011',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 7,
+			desc: 'Sink, Scrub, 1-Bay, Stainless Steel (SNKOS)',
+			quantity: 1, 
+			eqid: 'SNOKOS-002',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 8,
+			desc: 'Stool, Exam, Cushion-Seat (STLEC)',
+			quantity: 1, 
+			eqid: 'STLEC-010',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 9,
+			desc: 'Stretcher, Prodcedure/Recovery (STRPR)',
+			quantity: 1, 
+			eqid: 'STRPR-014',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 10,
+			desc: 'Table, Overbed, General (TOBGN)',
+			quantity: 1, 
+			eqid: 'TOBGN-018',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 12,
+			desc: 'Waste Can, Bio-Hazardous (WSTBH)',
+			quantity: 1, 
+			eqid: 'WSTBH-013',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 13,
+			desc: 'Waste Can, Bio-Hazardous (WSTBH)',
+			quantity: 1, 
+			eqid: 'WSTBH-013',
+			needdate: '2017-05-01',
+			},
+			{
+			id: 14,
+			desc: 'Waste Can, Step-On (WSTSO)',
+			quantity: 1, 
+			eqid: 'WSTSO-017',
+			needdate: '2017-05-01',
+			},
+			];
+	});
+</script>
+
+<body ng-controller="itemCtrl">
+
+
+<!-- Navigation -->
+<div id="nav" class="container-fluid">
+    <div class="navbar-header-left">
+      <a class="navbar-brand" href="#">
+       	Equiplan BIM Visualization Demo
+      </a>
+    </div>
+ 	
+ 	<ul class="nav navbar-nav">
+		<li><a href="#">Demo</a></li>
+	</ul>
+
+	<form class="navbar-form navbar-right" role="search">
+
+	    <div class="form-group">
+	    	<input type="text" class="form-control" placeholder="Search">
+	    </div>
+	    <button type="submit" class="btn btn-default">Submit</button>
+
+    </form>
+</div>
+
+<!-- Grid -->
+
+<h3 style="padding-left: 50px;">General Hospital --> Pre-Operation --> Post Anasthesia Care Unit 101
+
+
+						  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+			
+
+</h3>
+
+<div id="content" class="row">
+
+	<!-- Patients Table -->
+  <div class="col-lg-6">
+  
+	  <div id="tables" class="panel panel-primary">
+
+		  <div class="panel-heading">Items</div>
+		  <!-- Table -->
+			  <table class="table table-striped">
+			    <thead>
+			    	<td><b>#:</b></td>
+			    	<td><b>Description:</b></td>
+			    	<td><b>Quantity:</b></td>
+			    	<td><b>Equiplan ID:</b></td>
+			    	<td><b>Need Date:</b></td>
+			    </thead>
+
+			    <tbody>
+			    	<tr ng-repeat="item in items">
+			    		<td><span>{{item.id}}</span></td>
+			    		<td><span>{{item.desc}}</span></td>
+			    		<td><span>{{item.quantity}}</span></td>
+			    		<td><span>{{item.eqid}}</span></td>
+			    		<td><span>{{item.needdate}}</span></td>
+			    		<td><button type="button" class="btn btn-default btn-md">
+						  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+						</button></td>
+						<td><button type="button" class="btn btn-default btn-md">
+						  <span style="color:red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button></td>
+						
+
+		
+
+			    	</tr>
+			    </tbody>
+			  </table>
+	  </div>
+
+
+  </div>
+  <div class="col-lg-4">
+
+  <!-- Dashboard, Statistics, and Form? -->
+  		<div id="hospital_info"  class="panel panel-primary">
+  			<div class="panel-heading">Viewer</div>
+  				<iframe id="canvas" allowfullscreen src="" width="800" height="500"></iframe>
+		
+  		</div>
+
+  		
+  	
+
+
+
+  </div>
+
+</div>
+
+	
+</body>
+</html>
